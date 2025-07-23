@@ -1,22 +1,13 @@
 import secrets
-
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, update_session_auth_hash
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LogoutView, PasswordResetConfirmView
+from django.contrib.auth.views import LogoutView
 from django.core.mail import send_mail
-from django.db import transaction
-from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views import View
-from django.views.decorators.cache import never_cache
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, FormView
-
-from config import settings
 from config.settings import EMAIL_HOST_USER
 from users.forms import LoginForm, UserRegisterForm
 from users.models import User
@@ -35,7 +26,7 @@ class UserRegisterView(CreateView):
 
     model = User
     form_class = UserRegisterForm
-    success_url = reverse_lazy("clients:home")
+    success_url = reverse_lazy("medicine:home")
 
     def form_valid(self, form):
         user = form.save()
@@ -69,7 +60,7 @@ class LoginView(FormView):
     template_name = "users/login.html"
 
     def get_success_url(self):
-        return self.request.POST.get("next", reverse_lazy("clients:home"))
+        return self.request.POST.get("next", reverse_lazy("medicine:home"))
 
     def form_valid(self, form):
         user = form.get_user()

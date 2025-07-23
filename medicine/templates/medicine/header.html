@@ -1,0 +1,63 @@
+<header>
+    <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand d-md-none" href="#">
+                <svg class="bi" width="24" height="24">
+                    <use xlink:href="#aperture"></use>
+                </svg>
+                Aperture
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+                    aria-controls="#offcanvas" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="#offcanvasLabel">Aperture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav flex-grow-1 justify-content-between">
+                        <li class="nav-item"><a class="nav-link" href="#">
+                            <svg class="bi" width="24" height="24">
+                                <use xlink:href="#aperture"></use>
+                            </svg>
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'clients:home' %}">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/mailings/">Список рассылок</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/mail_messages/">Список писем</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/clients/">Список клиентов</a></li>
+                        {% if perms.users.can_view_user %}
+                        <li class="nav-item"><a class="nav-link" href="/users/">Список пользователей сервиса</a></li>
+                        {% endif %}
+                        <li>
+                            <hr class="dropdown-divider">
+                        <li class="nav-item"><a class="nav-link"
+                                                href="{% url 'attempts:mailing_stats' %}">Статистика</a>
+                        </li>
+                        <svg class="bi" width="24" height="24">
+                            <use xlink:href="#cart"></use>
+                        </svg>
+                        <div class="d-flex align-items-center">
+                            {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
+                                {% csrf_token %}
+                                <a href="{% url 'clients:home' %}">
+                                    <button class="p-2 btn btn-outline-primary" type="submit">Выйти</button>
+                                </a>
+                            </form>
+                            {% else %}
+                            <a href="{% url 'users:login' %}">
+                                <button class="p-2 btn btn-outline-primary" type="submit">Войти</button>
+                            </a>
+                            <a href="{% url 'users:register' %}">
+                                <button class="p-2 btn btn-outline-primary" type="submit">Регистрация</button>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

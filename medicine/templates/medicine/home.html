@@ -1,0 +1,66 @@
+{% extends 'medicine/base.html' %}
+
+{% block title %}Главная{% endblock %}
+{% block content %}
+
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>
+                Placeholder</title>
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <h2 class="fw-normal">Все рассылки</h2>
+            <li class="list-group-item">
+                <strong>Количество всех рассылок:</strong> {{ total_mailings }}
+            </li>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>
+                Placeholder</title>
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <h2 class="fw-normal">Активные рассылки</h2>
+            <li class="list-group-item">
+                <strong>Количество активных рассылок:</strong> {{ active_mailings_count }}
+            </li>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>
+                Placeholder</title>
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <h2 class="fw-normal">Уникальные клиенты</h2>
+            <li class="list-group-item">
+                <strong>Количество уникальных клиентов:</strong> {{ unique_clients }}
+            </li>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+</div>
+
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Список рассылок</h5>
+            <ul class="list-group list-group-flush">
+                {% for mailing in mailings %}
+                <li class="list-group-item">
+                    <a href="{% url 'mailings:mailing_detail' mailing.pk %}">{{ mailing.name }}</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item">Нет рассылок.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
