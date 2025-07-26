@@ -13,6 +13,7 @@ psycopg2-binary = "^2.9.10"
 pillow = "^11.3.0"
 ipython = "^9.4.0"
 requests = "^2.32.4"
+djangorestframework = "^3.16.0"
 
 
 [tool.poetry.group.dev.dependencies]

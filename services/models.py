@@ -13,4 +13,3 @@ class Service(models.Model):
     class Meta:
         verbose_name = 'услуга'
         verbose_name_plural = 'услуги'
-

@@ -7,6 +7,8 @@ from config import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("users/", include("users.urls", namespace="users")),
+    path("", include("services.urls", namespace="services")),
+    path("", include("medicine.urls", namespace="medicine")),
 ]
 
 if settings.DEBUG:
