@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True if os.getenv("DEBUG") == "True" else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     "users",
     "services",
     "phonenumber_field",
-    "contacts",
 ]
 
 MIDDLEWARE = [

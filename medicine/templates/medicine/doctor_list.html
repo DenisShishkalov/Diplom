@@ -1,24 +1,36 @@
 {% extends 'medicine/base.html' %}
 {% load my_tags %}
+
 {% block content %}
-<div class="album py-5 bg-body-tertiary">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for doctor in doctors %}
-            <div class="col">
-                <div class="services-slider-item card card-gray slick-slide slick-current slick-active"
-                       data-slick-index="0" aria-hidden="false" style="width: 300px;" tabindex="0" role="tabpanel"
-                       id="slick-slide20" aria-describedby="slick-slide-control20">
-                        <img src="{{ doctor.avatar| media_filter }}">
-                        <div class="card-body">
-                            <p class="card-text text-primary-emphasis">{{ doctor.full_name }}</p>
-                            <a class="btn btn-success text-primary-emphasis" href="{% url 'medicine:doctor_detail' doctor.pk %}"
-                               role="button">Посмотреть</a>
+
+<div class="row mb-2">
+    <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static ">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <hr>
+                        {% for doctor in doctors %}
+                        <div class="carousel-item active" >
+                            <img src="{{ doctor.avatar| media_filter }}" style="width: 440px; border-radius: 15%" >
+                            <h3 class="lead" >{{ doctor.full_name }}</h3>
+                            <p>{{ doctor.resume }}</p>
                         </div>
-                    </a>
+                        {% endfor %}
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Предыдущий</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Следующий</span>
+                    </button>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>
