@@ -19,6 +19,7 @@ class HomeView(ListView):
         context["doctor"] = Doctor.objects.all()  # или фильтруй как нужно
         context["service"] = Service.objects.all()
         context["Leading_specialist"] = Doctor.objects.get(pk=1)
+
         return context
 
 

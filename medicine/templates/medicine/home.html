@@ -3,13 +3,16 @@
 {% block title %}Главная{% endblock %}
 {% block content %}
 
+{%for company in object_list%}
 <main class="container">
     <div class="p-4 p-md-5 mb-4 rounded">
         <div class="col-lg-6 px-0">
             <h1 class="display-4 fst-italic text-primary-emphasis">Проверь себя - живи здорово!</h1>
-            <p class="lead my-3 text-primary-emphasis">Ваше здоровье - наша задача! Погрузитесь в историю нашей клиники, и вы уже сделали
+            <p class="lead my-3 text-primary-emphasis">Ваше здоровье - наша задача! Погрузитесь в историю нашей клиники,
+                и вы уже сделали
                 правильный выбор</p>
-            <p class="lead mb-0"><a href="{%url 'medicine:company'%}" class="text-primary-emphasis fw-bold">Мы расскажем всё о нас...</a></p>
+            <p class="lead mb-0"><a href="{%url 'medicine:company'%}" class="text-primary-emphasis fw-bold">Мы расскажем
+                всё о нас...</a></p>
         </div>
     </div>
     <div class="services-slider m80">
@@ -19,12 +22,13 @@
             </div>
             <div class="services-slider-items slider-init slick-initialized slick-slider slick-dotted"
                  style="padding-bottom: 0px; ">
-                <div class="slick-list draggable" >
-                    <div class="slick-track" >
+                <div class="slick-list draggable">
+                    <div class="slick-track">
                         {% for ser in service %}
                         <a class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis"
-                           data-slick-index="0" aria-hidden="false" style="background-color:#AFEEEE;" tabindex="0" role="tabpanel"
-                           id="slick-slide20" aria-describedby="slick-slide-control20" >
+                           data-slick-index="0" aria-hidden="false" style="background-color:#AFEEEE;" tabindex="0"
+                           role="tabpanel"
+                           id="slick-slide20" aria-describedby="slick-slide-control20">
 
                             <span class="link">{{ ser.name }}</span>
                             <picture>
@@ -47,7 +51,7 @@
     </div>
 
 
-<!--    Ведущий специалист-->
+    <!--    Ведущий специалист-->
 
 
     <div class="row mb-2">
@@ -66,10 +70,10 @@
 
                 </div>
                 <div class="services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
-                           aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
-                           aria-describedby="slick-slide-control22">
-                        <img src="{{ Leading_specialist.avatar | media_filter }}"
-                             width="294" height="198">
+                     aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
+                     aria-describedby="slick-slide-control22">
+                    <img src="{{ Leading_specialist.avatar | media_filter }}"
+                         width="294" height="198">
                 </div>
             </div>
         </div>
@@ -89,10 +93,10 @@
                     </a>
                 </div>
                 <div class="services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
-                           aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
-                           aria-describedby="slick-slide-control22">
+                     aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
+                     aria-describedby="slick-slide-control22">
                     <img src="https://avatars.mds.yandex.net/i?id=a20cbd6e6b170657f8a7963ca5272825_l-5334983-images-thumbs&n=13"
-                             alt="Клиническая лабораторная диагностика" width="294" height="198">
+                         alt="Клиническая лабораторная диагностика" width="294" height="198">
                 </div>
             </div>
         </div>
@@ -105,36 +109,13 @@
             </h3>
 
             <article class="blog-post">
-                <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
-                <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+                <h2 class="display-5 link-body-emphasis mb-1">Данные для связи с нами</h2>
+                <p class="blog-post-meta"><a href="#"></a></p>
 
-                <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap.
-                    Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-                <hr>
-                <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                    space and show how a longer snippet of text affects the surrounding content. We'll repeat it often
-                    to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-                <h2>Blockquotes</h2>
-                <p>This is an example blockquote in action:</p>
-                <blockquote class="blockquote">
-                    <p>Quoted text goes here.</p>
-                </blockquote>
-                <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                    space and show how a longer snippet of text affects the surrounding content. We'll repeat it often
-                    to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-                <h3>Example lists</h3>
-                <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other
-                    highly repetitive body text used throughout. This is an example unordered list:</p>
-                <ul>
-                    <li>First list item</li>
-                    <li>Second list item with a longer description</li>
-                    <li>Third list item to close it out</li>
-                </ul>
-                <p>And this is an ordered list:</p>
                 <ol>
-                    <li>First list item</li>
-                    <li>Second list item with a longer description</li>
-                    <li>Third list item to close it out</li>
+                    <li>Наша почта: {{ company.email }}</li>
+                    <li>Свяжитесь с нами по номеру телефона: {{ company.phone }}</li>
+                    <li>Найдите нас по адресу: {{ company.address }}</li>
                 </ol>
                 <p>And this is a definition list:</p>
                 <dl>
@@ -197,9 +178,19 @@
         <div class="col-md-4">
             <div class="position-sticky" style="top: 2rem;">
                 <div class="p-4 mb-3 bg-body-tertiary rounded">
-                    <h4 class="fst-italic">About</h4>
-                    <p class="mb-0">Customize this section to tell your visitors a little bit about your publication,
-                        writers, content, or something else entirely. Totally up to you.</p>
+                    <h4 class="fst-italic">О записях</h4>
+                    <p class="mb-0">Для записи на прием к врачу перейдите по ссылке ниже выберите врача и назначте удобное для вас время</p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'medicine:appointment_form' %}" class="btn btn-outline-success">Записаться на прием</a>
+                    {% else %}
+                    <p>Для записи рассылки необходима авторизация</p>
+                    <a href="{% url 'users:login' %}">
+                        <button class="p-2 btn btn-outline-primary" type="submit">Войти</button>
+                    </a>
+                    <a href="{% url 'users:register' %}">
+                        <button class="p-2 btn btn-outline-primary" type="submit">Регистрация</button>
+                    </a>
+                    {% endif %}
                 </div>
 
                 <div>
@@ -271,6 +262,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
 
 </main>
 {% endblock %}
