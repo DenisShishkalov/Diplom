@@ -61,7 +61,7 @@
 
                     <strong class="d-inline-block mb-2 text-primary-emphasis">Ведущий специалист </strong>
                     <p class="card-text mb-auto">{{ Leading_specialist }}</p>
-                    <a href="{ url  }" class="icon-link gap-1 icon-link-hover stretched-link">
+                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
                         Continue reading
                         <svg class="bi">
                             <use xlink:href="#chevron-right"></use>
@@ -69,34 +69,31 @@
                     </a>
 
                 </div>
-                <div class="services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
-                     aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
+                <div aria-hidden="false" style="width: 400px; height: 250px" tabindex="0" role="tabpanel" id="slick-slide22"
                      aria-describedby="slick-slide-control22">
                     <img src="{{ Leading_specialist.avatar | media_filter }}"
-                         width="294" height="198">
+                         width="390" height="240" style="border-radius: 15%">
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+                    <strong class="d-inline-block mb-2 text-success-emphasis">История</strong>
                     <h3 class="mb-0">Post title</h3>
                     <div class="mb-1 text-body-secondary">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                        additional content.</p>
-                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                    <p class="mb-auto">{{ company.history }}</p>
+                    <a href="{%url 'medicine:company'%}" class="icon-link gap-1 icon-link-hover stretched-link">
                         Continue reading
                         <svg class="bi">
                             <use xlink:href="#chevron-right"></use>
                         </svg>
                     </a>
                 </div>
-                <div class="services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
-                     aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
+                <div aria-hidden="false" style="width: 350px; height: 340px" tabindex="0" role="tabpanel" id="slick-slide22"
                      aria-describedby="slick-slide-control22">
-                    <img src="https://avatars.mds.yandex.net/i?id=a20cbd6e6b170657f8a7963ca5272825_l-5334983-images-thumbs&n=13"
-                         alt="Клиническая лабораторная диагностика" width="294" height="198">
+                    <img src="{{ company.photo | media_filter }}"
+                         width="390" height="240" style="border-radius: 15%">
                 </div>
             </div>
         </div>

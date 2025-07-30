@@ -48,7 +48,10 @@ class Company(models.Model):
     history = models.TextField(verbose_name="История компании")
     mission = models.CharField(max_length=500, verbose_name="Миссия компания")
     values = models.TextField(verbose_name="ценность компании")
-    phone = PhoneNumberField(verbose_name='телефон', blank=True, null=True)
+    photo = models.ImageField(
+        upload_to="medicine/company/", verbose_name="Аватарка", null=True, blank=True
+    )
+    phone = PhoneNumberField(verbose_name="телефон", blank=True, null=True)
     doctor = models.ForeignKey(
         Doctor, on_delete=models.CASCADE, verbose_name="Врач", blank=True, null=True
     )
@@ -59,8 +62,16 @@ class Company(models.Model):
         blank=True,
         null=True,
     )
-    email = models.EmailField(unique=True, verbose_name='почта компании', blank=True, null=True)
-    address = models.CharField(max_length=400, verbose_name='адрес', help_text='укажите адрес компании', blank=True, null=True)
+    email = models.EmailField(
+        unique=True, verbose_name="почта компании", blank=True, null=True
+    )
+    address = models.CharField(
+        max_length=400,
+        verbose_name="адрес",
+        help_text="укажите адрес компании",
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = "Компания"
@@ -85,7 +96,8 @@ class Appointment(models.Model):
         db_index=True,
     )
     appointment_time = models.DateTimeField(
-        verbose_name="время", help_text="укажите время записи на прием",
+        verbose_name="время",
+        help_text="укажите время записи на прием",
     )
     doctor = models.ForeignKey(
         Doctor,
@@ -99,7 +111,9 @@ class Appointment(models.Model):
         verbose_name="Владелец",
         null=True,
     )
-    response = models.TextField(verbose_name="Результаты диагностики", blank=True, null=True)
+    response = models.TextField(
+        verbose_name="Результаты диагностики", blank=True, null=True
+    )
 
     class Meta:
         verbose_name = "Запись на прием"

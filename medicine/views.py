@@ -48,6 +48,7 @@ class DoctorDetailView(DetailView):
 
 class AppointmentListView(ListView):
     """Список записей на прием"""
+
     model = Appointment
     template_name = "medicine/appointment_list.html"
     context_object_name = "appointments"

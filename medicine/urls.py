@@ -13,15 +13,18 @@ urlpatterns = [
     # Главная страница, о компании
     path("", HomeView.as_view(), name="home"),
     path("company/", CompanyView.as_view(), name="company"),
-
     # Список и создание докторов
-
     path("medicine/doctor/", DoctorListView.as_view(), name="doctor_list"),
     path("medicine/doctor/<int:pk>/", DoctorDetailView.as_view(), name="doctor_detail"),
-
     # создание и список записей на прием
-    path("medicine/appointment/", AppointmentListView.as_view(), name="appointment_list"),
-    path("medicine/appointment/create/", AppointmentCreateView.as_view(), name="appointment_form"),
+    path(
+        "medicine/appointment/", AppointmentListView.as_view(), name="appointment_list"
+    ),
+    path(
+        "medicine/appointment/create/",
+        AppointmentCreateView.as_view(),
+        name="appointment_form",
+    ),
 ]
 
 if settings.DEBUG:
