@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
+
 from users.apps import UsersConfig
-from users.views import LoginView, LogoutView, UserRegisterView, email_verification
+from users.views import (LoginView, LogoutView, UserRegisterView,
+                         email_verification)
 
 app_name = UsersConfig.name
 

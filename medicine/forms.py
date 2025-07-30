@@ -1,10 +1,11 @@
 from django import forms
 
-from medicine.models import Doctor
+from medicine.models import Appointment, Doctor
 
 
 class DoctorForm(forms.ModelForm):
     """Форма создания доктора"""
+
     class Meta:
         model = Doctor
         fields = ["full_name", "resume", "specialization", "work_experience"]
@@ -21,10 +22,23 @@ class DoctorForm(forms.ModelForm):
             {
                 "class": "form-control",
                 "placeholder": "Выберите специализацию",
-            })
+            }
+        )
         self.fields["work_experience"].widget.attrs.update(
             {
                 "class": "form-control",
                 "placeholder": "Укажите стаж работы в этой сфере",
             }
         )
+
+
+class AppointmentForm(forms.ModelForm):
+    """Форма создания записи на прием"""
+
+    class Meta:
+        model = Appointment
+        fields = ["doctor", "appointment_time",]
+
+        widgets = {
+            "appointment_time": forms.DateInput(attrs={"type": "datetime-local"})
+        }

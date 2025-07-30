@@ -5,9 +5,14 @@ from services.models import Service
 
 class ServiceForm(forms.ModelForm):
     """Форма создания услуг"""
+
     class Meta:
         model = Service
-        fields = ["name", "description", "price",]
+        fields = [
+            "name",
+            "description",
+            "price",
+        ]
 
     def __init__(self, *args, **kwargs):
         super(ServiceForm, self).__init__(*args, **kwargs)
@@ -21,4 +26,5 @@ class ServiceForm(forms.ModelForm):
             {
                 "class": "form-control",
                 "placeholder": "Укажите цену",
-            })
+            }
+        )

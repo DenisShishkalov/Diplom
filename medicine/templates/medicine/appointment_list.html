@@ -1,0 +1,42 @@
+
+{% extends 'medicine/base.html' %}
+
+{% block title %}Ваши записи на прием{% endblock %}
+
+{% block content %}
+<h1>Список записей</h1>
+{% if user.is_authenticated %}
+<a href="{% url 'medicine:appointment_form' %}" class="btn btn-primary">Записаться на прием</a>
+{% else %}
+    <p>Для записи рассылки необходима авторизация</p>
+    <a href="{% url 'users:login' %}"><button class="p-2 btn btn-outline-primary" type="submit">Войти</button></a>
+    <a href="{% url 'users:register' %}"><button class="p-2 btn btn-outline-primary" type="submit">Регистрация</button></a>
+{% endif %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Доктор</th>
+            <th>Статус</th>
+            <th>время</th>
+            <th>Результат диагностики</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in object_list %}
+        {% if user == appointment.owner %}
+        <tr>
+            <td>{{ appointment.doctor }}</td>
+            <td>{{ appointment.status }}</td>
+            <td>{{ appointment.appointment_time }}</td>
+            <td>{{ appointment.response }}</td>
+        </tr>
+        {% endif %}
+        {% empty %}
+        <tr>
+            <td colspan="4">У вас не было записей</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
