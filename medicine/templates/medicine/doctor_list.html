@@ -1,0 +1,25 @@
+{% extends 'medicine/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for doctor in doctors %}
+            <div class="col">
+                <div class="services-slider-item card card-gray slick-slide slick-current slick-active"
+                       data-slick-index="0" aria-hidden="false" style="width: 300px;" tabindex="0" role="tabpanel"
+                       id="slick-slide20" aria-describedby="slick-slide-control20">
+                        <img src="{{ doctor.avatar| media_filter }}">
+                        <div class="card-body">
+                            <p class="card-text text-primary-emphasis">{{ doctor.full_name }}</p>
+                            <a class="btn btn-success text-primary-emphasis" href="{% url 'medicine:doctor_detail' doctor.pk %}"
+                               role="button">Посмотреть</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,23 +1,28 @@
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  TemplateView, UpdateView)
-from rest_framework.reverse import reverse, reverse_lazy
-from medicine.forms import DoctorForm
-from medicine.models import Doctor
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView, ListView
+
+from medicine.models import Doctor, Company
+from services.models import Service
 
 
-class CompanyView(TemplateView):
-    """Контроллер отображения информации о компании"""
-
+class HomeView(ListView):
+    """Контроллер отображения главной информации"""
+    model = Company
     template_name = "medicine/home.html"
+    context_object_name = "home"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['doctor'] = Doctor.objects.all()  # или фильтруй как нужно
+        context['service'] = Service.objects.all()
+        context['Leading_specialist'] = Doctor.objects.get(pk=1)
+        return context
 
 
-class DoctorCreateView(LoginRequiredMixin, CreateView):
-    """КОнтроллер создания доктора"""
-
-    model = Doctor
-    form_class = DoctorForm  # используем форму для создания доктора
-    success_url = reverse_lazy("clients:client_list")
+class CompanyView(ListView):
+    """Контроллер отображения информации о компании"""
+    model = Company
+    template_name = "medicine/company.html"
+    context_object_name = "company"
 
 
 class DoctorListView(ListView):
@@ -27,25 +32,7 @@ class DoctorListView(ListView):
     context_object_name = "doctors"
 
 
-class DoctorDetailView(LoginRequiredMixin, DetailView):
+class DoctorDetailView(DetailView):
     """Контроллер для детального просмотра"""
     model = Doctor
-    context_object_name = "medicine/doctor_detail.html"
-
-
-class DoctorUpdateView(LoginRequiredMixin, UpdateView):
-    """Контроллер для изменения доктора"""
-
-    model = Doctor
-    form_class = DoctorForm
-    success_url = reverse_lazy("medicine:doctor_list")
-
-    def get_success_url(self):
-        return reverse("medicine:doctor_detail", args=[self.kwargs.get("pk")])
-
-
-class DoctorDeleteView(LoginRequiredMixin, DeleteView):
-    """Контроллер для удаления доктора"""
-
-    model = Doctor
-    success_url = reverse_lazy("medicine:doctor_list")
+    context_object_name = "doctor"

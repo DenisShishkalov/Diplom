@@ -1,24 +1,14 @@
 import secrets
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView
 from django.views.generic.edit import CreateView, FormView
 from config.settings import EMAIL_HOST_USER
 from users.forms import LoginForm, UserRegisterForm
 from users.models import User
-
-
-class UserListView(LoginRequiredMixin, ListView):
-    """Контроллер списка пользователей сервиса"""
-
-    model = User
-    template_name = "users/users_list.html"
-    context_object_name = "users"
 
 
 class UserRegisterView(CreateView):
@@ -76,4 +66,4 @@ class LoginView(FormView):
 class LogoutView(LogoutView):
     """Выход из аккаунта"""
 
-    next_page = reverse_lazy("users:login")
+    next_page = reverse_lazy("medicine:home")

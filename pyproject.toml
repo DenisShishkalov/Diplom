@@ -14,6 +14,9 @@ pillow = "^11.3.0"
 ipython = "^9.4.0"
 requests = "^2.32.4"
 djangorestframework = "^3.16.0"
+django-phonenumber-field = "^8.1.0"
+django-countries = "^7.6.1"
+phonenumbers = "^9.0.10"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -2,17 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    {% include 'medicine/includes_menu/header.html' %}
+    <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Сайт медицинской диагностики{% endblock %}</title>
+    <title>{% block title %}Управление рассылками{% endblock %}</title>
     <link href="{% static  'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 <body>
-    {% include "clients/headers.html" %}
+    {% include "medicine/head_nav/head.html" %}
     <div class="container mt-5">
         {% block content %}{% endblock %}
     </div>
-    {% include "clients/footer.html" %}
+    {% include "medicine/includes_menu/footer.html" %}
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
