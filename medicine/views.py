@@ -16,9 +16,9 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["home"] = Company.objects.first()
         context["doctor"] = Doctor.objects.all()  # или фильтруй как нужно
         context["service"] = Service.objects.all()
-        context["Leading_specialist"] = Doctor.objects.get(pk=1)
 
         return context
 
@@ -34,7 +34,6 @@ class CompanyView(ListView):
         context = super().get_context_data(**kwargs)
         context["doctor"] = Doctor.objects.all()  # или фильтруй как нужно
         context["service"] = Service.objects.all()
-        context["Leading_specialist"] = Doctor.objects.get(pk=1)
 
         return context
 
