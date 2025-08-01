@@ -60,17 +60,22 @@
       </a>
     </header>
 
-    <div  class="p-5 mb-4 bg-body-tertiary rounded-3" >
-      <div class="container-fluid py-5" style="background-color:#87CEEB">
+
+      <div class="container-fluid py-5" style="background-color:#008B8B; border-radius: 15%">
         <h1 class="display-5 fw-bold">{{ object.name }}</h1>
       </div>
-    </div>
+    <hr>
 
     <div class="row align-items-md-stretch">
       <div class="col-md-6">
         <div class="h-100 p-5 text-bg-dark rounded-3" style="background-color:#87CEEB">
-          <img src="{{ service.photo | media_filter }}">
-          <p class="col-md-8 fs-4">{{ object.description }}</p>
+          <div aria-hidden="false" style="width: 350px; height: 300px" tabindex="0" role="tabpanel"
+                 id="slick-slide22"
+                 aria-describedby="slick-slide-control22">
+                <img src="{{ object.photo | media_filter }}"
+                     width="350" height="340" style="border-radius: 15%">
+            </div>
+          <p class="col-md-8 fs-4">Описание и виды: {{ object.description }}</p>
           <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
           <a class="btn btn-primary" href="{% url 'services:service_list' %}" role="button">Вернуться</a>
         </div>
