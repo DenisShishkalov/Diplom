@@ -5,7 +5,8 @@ from django.urls import path
 from medicine.apps import MedicineConfig
 
 from .views import (AppointmentCreateView, AppointmentListView, CompanyView,
-                    DoctorDetailView, DoctorListView, HomeView, ContactsListView)
+                    ContactsListView, DoctorDetailView, DoctorListView,
+                    HomeView)
 
 app_name = MedicineConfig.name
 

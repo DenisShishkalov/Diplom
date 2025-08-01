@@ -82,7 +82,7 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
 
 class ContactsListView(ListView):
     model = Company
-    template_name = 'medicine/contacts.html'
+    template_name = "medicine/contacts.html"
     context_object_name = "contacts"
 
     def get_context_data(self, **kwargs):
