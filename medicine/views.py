@@ -30,6 +30,14 @@ class CompanyView(ListView):
     template_name = "medicine/company.html"
     context_object_name = "company"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["doctor"] = Doctor.objects.all()  # или фильтруй как нужно
+        context["service"] = Service.objects.all()
+        context["Leading_specialist"] = Doctor.objects.get(pk=1)
+
+        return context
+
 
 class DoctorListView(ListView):
     """Контроллер вывода списка врачей"""
@@ -70,3 +78,15 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         appointment.owner = user
         appointment.save()
         return super().form_valid(form)
+
+
+class ContactsListView(ListView):
+    model = Company
+    template_name = 'medicine/contacts.html'
+    context_object_name = "contacts"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["company"] = Company.objects.all()  # или фильтруй как нужно
+
+        return context

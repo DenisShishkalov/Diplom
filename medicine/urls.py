@@ -5,14 +5,15 @@ from django.urls import path
 from medicine.apps import MedicineConfig
 
 from .views import (AppointmentCreateView, AppointmentListView, CompanyView,
-                    DoctorDetailView, DoctorListView, HomeView)
+                    DoctorDetailView, DoctorListView, HomeView, ContactsListView)
 
 app_name = MedicineConfig.name
 
 urlpatterns = [
-    # Главная страница, о компании
+    # Главная страница, о компании, контакты
     path("", HomeView.as_view(), name="home"),
     path("company/", CompanyView.as_view(), name="company"),
+    path("contacts/", ContactsListView.as_view(), name="contacts"),
     # Список и создание докторов
     path("medicine/doctor/", DoctorListView.as_view(), name="doctor_list"),
     path("medicine/doctor/<int:pk>/", DoctorDetailView.as_view(), name="doctor_detail"),
