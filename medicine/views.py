@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, ListView
 from rest_framework.reverse import reverse_lazy
-
+from django.shortcuts import render
 from medicine.forms import AppointmentForm
 from medicine.models import Appointment, Company, Doctor
 from services.models import Service
@@ -84,8 +84,17 @@ class ContactsListView(ListView):
     template_name = "medicine/contacts.html"
     context_object_name = "contacts"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["company"] = Company.objects.all()  # или фильтруй как нужно
+    def get(self, request, *args, **kwargs):
+        company = Company.objects.first()
+        address = company.address
+        phone = company.phone
+        email = company.email
+        context = {
+            'address': address,
+            'phone': phone,
+            'email': email # или получи его из модели
+        }
+        return render(request, 'medicine/contacts.html', context)
 
-        return context
+
+

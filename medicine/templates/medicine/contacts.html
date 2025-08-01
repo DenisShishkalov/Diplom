@@ -1,15 +1,16 @@
-{%for com in company %}
+{% extends 'medicine/base.html' %}
+{% block content %}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ com.name | upper }}</title>
+    <title>{{ contact | upper }}</title>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">{{ com.name | upper }}</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal">{{ contact.name | upper }}</h5>
     <nav class="ms-5">
         <a class="p-2 btn btn-outline-primary" href="/">Главная страница</a>
         <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
@@ -36,7 +37,15 @@
                         </tr>
                         <tr>
                             <td class="w-25">Адрес</td>
-                            <td>{{ com.address }}</td>
+                            <td>{{ address }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-25">Телефон</td>
+                            <td>{{ phone }}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-25">Почта</td>
+                            <td>{{ email }}</td>
                         </tr>
                     </table>
                 </div>
@@ -72,7 +81,7 @@
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
-                {{ com.name }}
+                {{ contact.name }}
                 <small class="d-block mb-3 text-muted">&copy; 2025</small>
             </div>
             <div class="col-6 col-md">
@@ -103,4 +112,4 @@
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-{% endfor %}
+{% endblock %}
