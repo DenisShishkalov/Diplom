@@ -26,7 +26,7 @@
                 <div class="row mb-4">
                     {% for ser in service %}
                     <div class="col">
-                        <a class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis"
+                        <a  class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis"
                            data-slick-index="0" aria-hidden="false" style="background-color:#AFEEEE;" tabindex="0"
                            role="tabpanel"
                            id="slick-slide20" aria-describedby="slick-slide-control20">
@@ -37,9 +37,9 @@
                                      width="294" height="198">
                             </picture>
                             <ul>
-                                <li>Описание: {{ ser.description }}</li>
-                                <li>Стоимость услуги: {{ ser.price }} $</li>
-                                <li>Специализация услуги: {{ ser.service_specialization }}</li>
+                                <li align="justify" style="margin: 5px 10px">Описание: {{ ser.description }}</li>
+                                <li align="justify" style="margin: 5px 10px">Стоимость услуги: {{ ser.price }} $</li>
+                                <li align="justify" style="margin: 5px 10px">Специализация услуги: {{ ser.service_specialization }}</li>
                             </ul>
                         </a>
                     </div>
@@ -62,7 +62,7 @@
                 <div class="row mb-4">
                     <h3 class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis" style="background-color:#AFEEEE;">Расскажем всё о наших специалистах </h3>
                     {% for doc in doctor %}
-                    <div class="col">
+                    <div class="col display: flex">
                         <a class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis"
                            data-slick-index="0" aria-hidden="false" style="background-color:#AFEEEE;" tabindex="0"
                            role="tabpanel"
@@ -74,9 +74,9 @@
                                      width="280" height="240" style="border-radius: 25%">
                             </picture>
                             <ul>
-                                <li class="card-text mb-auto text-primary-emphasis">Доктор {{ doc.full_name }}</li>
-                                <li class="card-text mb-auto text-primary-emphasis">{{ doc.resume }}</li>
-                                <li class="card-text mb-auto text-primary-emphasis">Направление: {{ doc.specialization }}</li>
+                                <li align="justify" style="margin: 5px 10px" class="card-text mb-auto text-primary-emphasis " >Доктор {{ doc.full_name }}</li>
+                                <li align="justify" style="margin: 5px 10px" class="card-text mb-auto text-primary-emphasis">{{ doc.resume }}</li>
+                                <li align="justify" style="margin: 5px 10px" class="card-text mb-auto text-primary-emphasis">Направление: {{ doc.specialization }}</li>
                             </ul>
                         </a>
                     </div>
@@ -99,7 +99,7 @@
                 <strong class="d-inline-block mb-2 text-success-emphasis">История</strong>
                 <h3 class="mb-0">{{ home.name }}</h3>
 
-                <p class="mb-auto text-primary-emphasis">{{ home.history }}</p>
+                <p align="justify" class="mb-auto text-primary-emphasis">{{ home.history }}</p>
                 <a href="{%url 'medicine:company'%}" class="icon-link gap-1 icon-link-hover stretched-link">
                     Continue reading
                     <svg class="bi">
@@ -129,7 +129,7 @@
                     <li>Найдите нас по адресу: {{ home.address }}</li>
                 </ol>
                 <h2>Диагностика Covid-19</h2>
-                <p class="text-primary-emphasis">Лабораторная диагностика новой коронавирусной болезни COVID-19 подразумевает обнаружение
+                <p align="justify" class="text-primary-emphasis">Лабораторная диагностика новой коронавирусной болезни COVID-19 подразумевает обнаружение
                     вируса,
                     подтверждение перенесенной инфекции, оценку степени выраженности воспаления, возможных
                     осложнений (присоединения бактериальной инфекции, развития тромбозов).
@@ -151,20 +151,20 @@
                 <ul>
                     <li><strong>Классификация COVID-19</strong>
                     </li>
-                    <li >Легкое течение (около 80% заболевших).
+                    <li align="justify" >Легкое течение (около 80% заболевших).
                         Температура тела до 38°C, кашель (чаще сухой, но может быть и с мокротой), общая
                         слабость, боли
                         в горле; возможно, снижение обоняния и вкуса, расстройство стула, различные кожные
                         высыпания.
                     </li>
-                    <li>Среднетяжелое течение.
+                    <li align="justify">Среднетяжелое течение.
                         Температура тела выше 38°C.
                         Частота дыхания более 22/мин.
                         Одышка – ощущение нехватки воздуха, сопровождающееся изменением частоты, глубины и ритма
                         дыхания
                         при обычных физических нагрузках.
                     </li>
-                    <li>Тяжелое течение.
+                    <li align="justify">Тяжелое течение.
                         Частота дыхания более 30/мин.
                         SpO2 менее 93%.
                         Снижение уровня сознания или возбуждение.
@@ -176,7 +176,7 @@
                         Изменения ряда лабораторных показателей, определяемых в условиях отделения интенсивной
                         терапии.
                     </li>
-                    <li>
+                    <li align="justify">
                         Крайне тяжелое течение – множественные тяжелейшие поражения органов и систем с
                         необходимостью
                         респираторной поддержки (инвазивной вентиляции легких).Изменения в легких при КТ,
@@ -188,13 +188,13 @@
 
                 <ul>
                 <li>О компании </li>
-                <p>{{ home.history }}</p>
+                <p align="justify">{{ home.history }}</p>
                 <li>Миссия данного проекта</li>
-                <p>{{ home.mission }}</p>
+                <p align="justify">{{ home.mission }}</p>
                 <img src="{{ home.photo | media_filter }}"
                      width="300" height="200" style="border-radius: 15%">
                 <h4>Наши ценности</h4>
-                <p>{{ home.values }}</p>
+                <p align="justify">{{ home.values }}</p>
                     </ul>
             </article>
 

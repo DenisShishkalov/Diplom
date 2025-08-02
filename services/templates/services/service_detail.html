@@ -69,23 +69,22 @@
     <div class="row align-items-md-stretch">
       <div class="col-md-6">
         <div class="h-100 p-5 text-bg-dark rounded-3" style="background-color:#87CEEB">
-          <div aria-hidden="false" style="width: 350px; height: 300px" tabindex="0" role="tabpanel"
+          <div aria-hidden="false" style="width: 500px; height: 300px" tabindex="0" role="tabpanel"
                  id="slick-slide22"
                  aria-describedby="slick-slide-control22">
-                <img src="{{ object.photo | media_filter }}"
+                <img class="col-md-12" src="{{ object.photo | media_filter }}"
                      width="350" height="340" style="border-radius: 15%">
             </div>
-          <p class="col-md-8 fs-4">Описание и виды: {{ object.description }}</p>
-          <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+          <p align="justify" class="col-md-12 fs-4">Описание: {{ object.description }}</p>
           <a class="btn btn-primary" href="{% url 'services:service_list' %}" role="button">Вернуться</a>
         </div>
       </div>
       <div class="col-md-6">
         <div class="h-100 p-5 bg-body-tertiary border rounded-3">
           <img src="{{ service.photo | media_filter }}">
-          <h2>Add borders</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-          <button class="btn btn-outline-secondary" type="button">Example button</button>
+          <h2>Виды:</h2>
+          <p align="justify">Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+          <a class="btn btn-success text-primary-emphasis" href="{% url 'services:service_list' %}" role="button">Вернуться</a>
         </div>
       </div>
     </div>

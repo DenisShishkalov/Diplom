@@ -66,7 +66,7 @@
             <h3 class="pb-4 mb-4 fst-italic border-bottom text-primary-emphasis">
                 Расскажем об истории компании
             </h3>
-            <p class="text-primary-emphasis">{{ com.history }}</p>
+            <p align="justify" class="text-primary-emphasis">{{ com.history }}</p>
 
             <article class="blog-post">
                 <h3 class="mb-0 text-primary-emphasis">{{ com.doctor }} </h3>
@@ -75,13 +75,13 @@
                 <p class="text-primary-emphasis">Основатель - человек с большим сердцем и невероятным медецинским
                     опытом.</p>
                 <hr>
-                <p class="text-primary-emphasis">{{ com.doctor.resume }}</p>
+                <p align="justify" class="text-primary-emphasis">{{ com.doctor.resume }}</p>
                 <h2 class="text-primary-emphasis">Миссия</h2>
                 <blockquote class="blockquote">
                 </blockquote>
-                <p class="text-primary-emphasis">{{ com.mission }}</p>
+                <p align="justify" class="text-primary-emphasis">{{ com.mission }}</p>
                 <hr/>
-                <h3 class="text-primary-emphasis">Ценности</h3>
+                <h3  class="text-primary-emphasis">Ценности</h3>
                 <ul>
                     <li class="text-primary-emphasis">{{ com.values }}</li>
                 </ul>
@@ -111,8 +111,7 @@
                             <img width="170" style="border-radius: 30%"
                                  src="{{ doc.avatar | media_filter }}">
                             <h4 class="mb-0">{{ doc.full_name }}</h4>
-                            <p>
-                                {{ doc.resume }}</p>
+                            <p align="justify" >{{ doc.resume }}</p>
                             <link>
                         </div>
                     </div>
