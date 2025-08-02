@@ -1,0 +1,36 @@
+{% extends 'medicine/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="album py-5 bg-body-tertiary ">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+        <div class="col">
+          <div class="card shadow-sm ">
+            <div class="card-body">
+              <p align="justify"  class="card-text services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
+                           aria-hidden="false" style="width: 310px; margin: 5px 10px" tabindex="0" role="tabpanel" id="slick-slide22"
+                           aria-describedby="slick-slide-control22">Имя: {{ object.full_name }}</p>
+              <p class="card-text services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
+                           aria-hidden="false" style="width: 310px;" tabindex="0" role="tabpanel" id="slick-slide22"
+                           aria-describedby="slick-slide-control22">Опыт работы: {{ object.work_experience }}</p>
+              <p align="justify" class="card-text services-slider-item card card-gray slick-slide slick-active" data-slick-index="2"
+                           aria-hidden="false" style="width: 310px; margin: 5px 10px" tabindex="0" role="tabpanel" id="slick-slide22"
+                           aria-describedby="slick-slide-control22">Резюмэ: {{ object.resume }}</p>
+              <div class="services-slider-item card card-gray slick-slide slick-current slick-active"
+                       data-slick-index="0" aria-hidden="false" style="width: 300px;" tabindex="0" role="tabpanel"
+                       id="slick-slide20" aria-describedby="slick-slide-control20">
+                        <img src="{{ doctor.avatar | media_filter }}">
+
+              <div class="d-flex justify-content-between align-items-center ">
+                <div class="btn-group">
+                  <a class="btn btn-primary" href="{% url 'medicine:doctor_list' %}" role="button">Вернуться</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

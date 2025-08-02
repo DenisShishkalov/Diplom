@@ -1,0 +1,279 @@
+{% extends 'medicine/base.html' %}
+{% load my_tags %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+
+
+<main class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="p-4 p-md-5 mb-4 rounded">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic text-primary-emphasis">Проверь себя - живи здорово!</h1>
+            <p class="lead my-3 text-primary-emphasis">Ваше здоровье - наша задача! Погрузитесь в историю нашей клиники,
+                и вы уже сделали
+                правильный выбор</p>
+            <p class="lead mb-0"><a href="{%url 'medicine:company'%}" class="text-primary-emphasis fw-bold">Мы расскажем
+                всё о нас...</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="title text-primary-emphasis"><p><strong>Технологически решаем</strong><br>
+                конкретные проблемы…</p>
+            </div>
+
+
+            <div class="container">
+                <div class="row mb-4">
+                    {% for ser in service %}
+                    <div class="col">
+                        <a  class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis"
+                           data-slick-index="0" aria-hidden="false" style="background-color:#AFEEEE;" tabindex="0"
+                           role="tabpanel"
+                           id="slick-slide20" aria-describedby="slick-slide-control20">
+
+                            <span class="link">{{ ser.name }}</span>
+                            <picture>
+                                <img src="{{ ser.photo | media_filter }}"
+                                     width="294" height="198">
+                            </picture>
+                            <ul>
+                                <li align="justify" style="margin: 5px 10px">Описание: {{ ser.description }}</li>
+                                <li align="justify" style="margin: 5px 10px">Стоимость услуги: {{ ser.price }} $</li>
+                                <li align="justify" style="margin: 5px 10px">Специализация услуги: {{ ser.service_specialization }}</li>
+                            </ul>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <ul class="slick-dots" role="tablist" style="display: none;">
+                <li class="slick-active" role="presentation">
+                    <button type="button" role="tab" id="slick-slide-control20" aria-controls="slick-slide20"
+                            aria-label="1 of 1" tabindex="0" aria-selected="true">1
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+            <div class="container">
+                <div class="row mb-4">
+                    <h3 class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis" style="background-color:#AFEEEE;">Расскажем всё о наших специалистах </h3>
+                    {% for doc in doctor %}
+                    <div class="col display: flex">
+                        <a class="services-slider-item card card-gray slick-slide slick-current slick-active text-primary-emphasis"
+                           data-slick-index="0" aria-hidden="false" style="background-color:#AFEEEE;" tabindex="0"
+                           role="tabpanel"
+                           id="slick-slide20" aria-describedby="slick-slide-control20">
+
+                            <span class="link">{{ ser.name }}</span>
+                            <picture>
+                                <img src="{{ doc.avatar | media_filter }}"
+                                     width="280" height="240" style="border-radius: 25%">
+                            </picture>
+                            <ul>
+                                <li align="justify" style="margin: 5px 10px" class="card-text mb-auto text-primary-emphasis " >Доктор {{ doc.full_name }}</li>
+                                <li align="justify" style="margin: 5px 10px" class="card-text mb-auto text-primary-emphasis">{{ doc.resume }}</li>
+                                <li align="justify" style="margin: 5px 10px" class="card-text mb-auto text-primary-emphasis">Направление: {{ doc.specialization }}</li>
+                            </ul>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <ul class="slick-dots" role="tablist" style="display: none;">
+                <li class="slick-active" role="presentation">
+                    <button type="button" role="tab" id="slick-slide-control20" aria-controls="slick-slide20"
+                            aria-label="1 of 1" tabindex="0" aria-selected="true">1
+                    </button>
+                </li>
+            </ul>
+
+
+
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success-emphasis">История</strong>
+                <h3 class="mb-0">{{ home.name }}</h3>
+
+                <p align="justify" class="mb-auto text-primary-emphasis">{{ home.history }}</p>
+                <a href="{%url 'medicine:company'%}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Continue reading
+                    <svg class="bi">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div aria-hidden="false" style="width: 350px; height: 340px" tabindex="0" role="tabpanel"
+                 id="slick-slide22"
+                 aria-describedby="slick-slide-control22">
+                <img src="{{ home.photo | media_filter }}"
+                     width="390" height="240" style="border-radius: 15%">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row g-5">
+        <div class="col-md-8">
+            <article class="blog-post">
+                <h3 class="display-5 link-body-emphasis mb-1 text-primary-emphasis">Данные для связи с нами</h3>
+                <p class="blog-post-meta"><a href="#"></a></p>
+
+                <ol>
+                    <li>Наша почта: {{ home.email }}</li>
+                    <li>Свяжитесь с нами по номеру телефона: {{ home.phone }}</li>
+                    <li>Найдите нас по адресу: {{ home.address }}</li>
+                </ol>
+                <h2>Диагностика Covid-19</h2>
+                <p align="justify" class="text-primary-emphasis">Лабораторная диагностика новой коронавирусной болезни COVID-19 подразумевает обнаружение
+                    вируса,
+                    подтверждение перенесенной инфекции, оценку степени выраженности воспаления, возможных
+                    осложнений (присоединения бактериальной инфекции, развития тромбозов).
+                    Наличие вируса в организме можно выявить путем взятия мазков из носоглотки (носа) и
+                    ротоглотки
+                    (зева).
+                    Обнаружение РНК SARS-CoV-2 методом ПЦР;
+                    Обнаружение вирусных антигенов (экспресс-диагностика).
+                    Для оценки иммунного ответа (наличия иммунитета к COVID-19, подтверждения текущей или
+                    перенесенной инфекции) определяют антитела классов IgM, IgG к SARS-CoV-2 в крови.
+
+                    Обнаружение антител IgG и IgM к коронавирусу – качественный (есть или нет антитела) и
+                    количественный (сколько антител) методы.
+                    Обнаружение антител IgG и IgM к коронавирусу (экспресс-диагностика).
+                    Экспресс-методы выявления антигена в мазке или антител в крови всегда качественные, то есть
+                    результат интерпретируется как положительный («обнаружено») или отрицательный («не
+                    обнаружено»).
+                </p>
+                <ul>
+                    <li><strong>Классификация COVID-19</strong>
+                    </li>
+                    <li align="justify" >Легкое течение (около 80% заболевших).
+                        Температура тела до 38°C, кашель (чаще сухой, но может быть и с мокротой), общая
+                        слабость, боли
+                        в горле; возможно, снижение обоняния и вкуса, расстройство стула, различные кожные
+                        высыпания.
+                    </li>
+                    <li align="justify">Среднетяжелое течение.
+                        Температура тела выше 38°C.
+                        Частота дыхания более 22/мин.
+                        Одышка – ощущение нехватки воздуха, сопровождающееся изменением частоты, глубины и ритма
+                        дыхания
+                        при обычных физических нагрузках.
+                    </li>
+                    <li align="justify">Тяжелое течение.
+                        Частота дыхания более 30/мин.
+                        SpO2 менее 93%.
+                        Снижение уровня сознания или возбуждение.
+                        Нестабильная гемодинамика (снижение артериального давления менее 90/60 мм рт. ст.,
+                        уменьшение
+                        объема выделяемой мочи).
+                        Изменения в легких на КТ органов грудной клетки, типичные для вирусного поражения (объем
+                        поражения значительный или субтотальный; КТ 3-4).
+                        Изменения ряда лабораторных показателей, определяемых в условиях отделения интенсивной
+                        терапии.
+                    </li>
+                    <li align="justify">
+                        Крайне тяжелое течение – множественные тяжелейшие поражения органов и систем с
+                        необходимостью
+                        респираторной поддержки (инвазивной вентиляции легких).Изменения в легких при КТ,
+                        типичные для
+                        вирусного поражения критической степени (объем поражения значительный или субтотальный;
+                        КТ 4).
+                    </li>
+                </ul>
+
+                <ul>
+                <li>О компании </li>
+                <p align="justify">{{ home.history }}</p>
+                <li>Миссия данного проекта</li>
+                <p align="justify">{{ home.mission }}</p>
+                <img src="{{ home.photo | media_filter }}"
+                     width="300" height="200" style="border-radius: 15%">
+                <h4>Наши ценности</h4>
+                <p align="justify">{{ home.values }}</p>
+                    </ul>
+            </article>
+
+            <nav class="blog-pagination" aria-label="Pagination">
+                <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
+                <a class="btn btn-outline-secondary rounded-pill disabled">Newer</a>
+            </nav>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="p-4 mb-3 bg-body-tertiary rounded">
+                    <h4 class="fst-italic">О записях</h4>
+                    <p class="mb-0">Для записи на прием к врачу перейдите по ссылке ниже выберите врача и
+                        назначте
+                        удобное для вас время</p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'medicine:appointment_form' %}" class="btn btn-outline-success">Записаться
+                        на
+                        прием</a>
+                    {% else %}
+                    <p>Для записи рассылки необходима авторизация</p>
+                    <a href="{% url 'users:login' %}">
+                        <button class="p-2 btn btn-outline-primary" type="submit">Войти</button>
+                    </a>
+                    <a href="{% url 'users:register' %}">
+                        <button class="p-2 btn btn-outline-primary" type="submit">Регистрация</button>
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <h4 class="fst-italic">Свяжитесь с нами</h4>
+                    <div class="card-body">
+                        <form method="post" action="" class="form-floating">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name">Имя</label>
+                                <input type="text" name="name" class="form-control" id="name"
+                                       placeholder="Ваше имя"
+                                       required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone">Телефон</label>
+                                <input type="text" name="phone" class="form-control" id="phone"
+                                       placeholder="Контактный телефон" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message">Сообщение</label>
+                                <textarea type="text" name="message" class="form-control" id="message"
+                                          placeholder="Контактный телефон" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="p-4">
+                    <h4 class="fst-italic">Archives</h4>
+                    <ol class="list-unstyled mb-0">
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Ваш профиль</a></li>
+                        <li><a href="#">Команда врачей</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ol>
+                </div>
+
+                <div class="p-4">
+                    <h4 class="fst-italic">Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
